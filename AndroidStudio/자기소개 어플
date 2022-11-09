@@ -1,0 +1,161 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    title: 'Named routes Demo',
+    // "/"을 앱이 시작하게 될 route로 지정합니다. 본 예제에서는 FirstScreen 위젯이 첫 번째 페이지가
+    // 될 것입니다.
+    initialRoute: '/',
+    routes: {
+      // When we navigate to the "/" route, build the FirstScreen Widget
+      // "/" Route로 이동하면, FirstScreen 위젯을 생성합니다.
+      '/': (context) => FirstScreen(),
+      '/second': (context) => SecondScreen(),
+      '/third': (context) => ThirdScreen(),
+      '/fourth': (context) => FourthScreen(),
+    },
+  ));
+}
+
+class FirstScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+          appBar: AppBar(
+              title: Text('강선우의 자기소개 어플',
+                style: TextStyle(color: Colors.yellow),)
+          ),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('소프트웨어학과\n  2017648002\n강선우',
+                    style: TextStyle(
+                      fontSize: 30, backgroundColor: Colors.yellow,),
+                  ),
+                ],
+              ),
+              Image.asset('assets/picone.PNG'),
+
+            ],
+
+          ),
+          bottomNavigationBar: BottomAppBar(
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                  ElevatedButton(onPressed: () { Navigator.pushNamed(context, '/second');},
+                    child: Text('사진')),
+                  ElevatedButton(onPressed: () {Navigator.pushNamed(context, '/third');},
+                    child: Text('연락처')),
+                  ElevatedButton(onPressed: () {Navigator.pushNamed(context, '/fourth');},
+                    child: Text('이력')),
+            ],
+          )
+      ),
+    ),
+
+    );
+  }
+}
+
+class SecondScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("사진"),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Image.asset('assets/img1.jpg',width: 200, height: 250,),
+              Image.asset('assets/img2.jpg',width: 200, height: 250,),
+            ],
+          ),
+          Image.asset('assets/img3.jpg',width: 200, height: 250,),
+
+        ],
+
+
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(onPressed: () {Navigator.pop(context);},
+              child: Text('돌아가기'),),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ThirdScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("연락처"),
+      ),
+      body: Center(
+        child: Container(
+          alignment: Alignment.center,
+          width: 250, height: 250, color: Colors.yellow,
+          child: Text('강선우\n01093806046',style: TextStyle(fontSize: 30)),
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(onPressed: () {Navigator.pop(context);},
+            child: Text('돌아가기'),),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class FourthScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("특이사항"),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('1.경성대학교 소프트웨어 학과',style: TextStyle(fontSize: 20)),
+          Text('2.한문 4급 자격증 보유',style: TextStyle(fontSize: 20),),
+          Text('3.플러터로 앱 개발 경력 보유',style: TextStyle(fontSize: 20),),
+          Text('4.평균 학점 XX점으로 졸업',style: TextStyle(fontSize: 20),),
+          Text('5.카페 알바 경력 보유',style: TextStyle(fontSize: 20),),
+          Text('6.안드로이드 스튜디오 다트코드 경력 보유',style: TextStyle(fontSize: 20),),
+          Text('7.고등학교 개근상 보유',style: TextStyle(fontSize: 20),),
+          Text('8.육군 병장 만기전역',style: TextStyle(fontSize: 20),),
+          Text('9.영어 회화 가능',style: TextStyle(fontSize: 20),),
+          Text('10.계획적인 성격',style: TextStyle(fontSize: 20),),
+        ],
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(onPressed: () {Navigator.pop(context);},
+              child: Text('돌아가기'),),
+          ],
+        ),
+      ),
+    );
+  }
+}
